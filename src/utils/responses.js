@@ -3,7 +3,7 @@ module.exports = {
   limitError: (limit) => `You can only generate ${limit} phone numbers at a go.`,
   phoneNumbersGenerated: (total) => `Successfully generated ${total} phone numbers.`,
   writeFileError: 'An error occured.',
-  phoneNumberFiles: 'All generated files',
+  phoneNumberFiles: 'All existing files',
   noFileName: 'Please provide filename',
   fileNotFound: 'Specified file not found.',
   fetchedPhoneNumbers: (filename) => `All phone numbers in ${filename}.`

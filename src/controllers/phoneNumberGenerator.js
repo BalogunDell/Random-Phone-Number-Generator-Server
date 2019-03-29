@@ -56,9 +56,10 @@ exports.generatePhoneNumbers = (req, res) => {
     const generatedPhoneNumbers = numberGenerator(sizeOfPhoneNumersToGenerate);
 
     const timeOfFileGeneration = moment().format();
-  const filePath = path.resolve(
+    const fileName = `${sizeOfPhoneNumersToGenerate}-numbers-generated-at-${timeOfFileGeneration}`
+    const filePath = path.resolve(
         __dirname, 
-        `../generatedPhoneNumbers/phone-numbers_${sizeOfPhoneNumersToGenerate}_${timeOfFileGeneration}.txt`
+        `../generatedPhoneNumbers/${fileName}.txt`
       );
     fs.writeFile(filePath, generatedPhoneNumbers, (error) => {
       if (error) {
@@ -67,7 +68,8 @@ exports.generatePhoneNumbers = (req, res) => {
       return res.status(200).json(
           { 
             message: phoneNumbersGenerated(sizeOfPhoneNumersToGenerate),
-            generatedPhoneNumbers
+            generatedPhoneNumbers,
+            fileName:fileName + '.txt',
           }
       );
     });
